@@ -1,4 +1,5 @@
 import {
+  IonAvatar,
   IonContent,
   IonIcon,
   IonItem,
@@ -11,7 +12,7 @@ import {
 } from '@ionic/react';
 
 import { useLocation } from 'react-router-dom';
-import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+import { logoGithub, book, school, logoLinkedin, mail} from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -23,44 +24,32 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
-    title: 'Inbox',
-    url: '/page/Inbox',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    title: 'LinkedIn',
+    url: '/folder/HomePage',
+    iosIcon: logoLinkedin,
+    mdIcon: logoLinkedin
   },
   {
-    title: 'Outbox',
-    url: '/page/Outbox',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp
+    title: 'GitHub',
+    url: '/page/GitHub',
+    iosIcon: logoGithub,
+    mdIcon: logoGithub
   },
   {
-    title: 'Favorites',
-    url: '/page/Favorites',
-    iosIcon: heartOutline,
-    mdIcon: heartSharp
+    title: 'University of Wollongong',
+    url: '/page/Uow',
+    iosIcon: school,
+    mdIcon: school
   },
   {
-    title: 'Archived',
-    url: '/page/Archived',
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp
-  },
-  {
-    title: 'Trash',
-    url: '/page/Trash',
-    iosIcon: trashOutline,
-    mdIcon: trashSharp
-  },
-  {
-    title: 'Spam',
-    url: '/page/Spam',
-    iosIcon: warningOutline,
-    mdIcon: warningSharp
+    title: 'Computer Science',
+    url: '/page/ComputerScienceDegree',
+    iosIcon: book,
+    mdIcon: book
   }
 ];
 
-const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+const info = ['Joshua Armour'];
 
 const Menu: React.FC = () => {
   const location = useLocation();
@@ -68,9 +57,21 @@ const Menu: React.FC = () => {
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
+
+        <IonItem>
+          <IonAvatar slot="start">
+            <img src="src/Images/myface.jpeg"/>
+          </IonAvatar>
+          <IonLabel>
+            Joshua Armour
+          </IonLabel>
+        </IonItem>
+
         <IonList id="inbox-list">
-          <IonListHeader>Inbox</IonListHeader>
-          <IonNote>hi@ionicframework.com</IonNote>
+          <IonListHeader>Contact </IonListHeader>
+          <IonNote>
+            Josh.D.Armour@gmail.com
+          </IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
@@ -83,15 +84,6 @@ const Menu: React.FC = () => {
           })}
         </IonList>
 
-        <IonList id="labels-list">
-          <IonListHeader>Labels</IonListHeader>
-          {labels.map((label, index) => (
-            <IonItem lines="none" key={index}>
-              <IonIcon aria-hidden="true" slot="start" icon={bookmarkOutline} />
-              <IonLabel>{label}</IonLabel>
-            </IonItem>
-          ))}
-        </IonList>
       </IonContent>
     </IonMenu>
   );
