@@ -1,0 +1,7 @@
+{
+  "name": "MyWebsite",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
